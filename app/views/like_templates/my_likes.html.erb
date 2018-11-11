@@ -1,7 +1,7 @@
 <div class="row mb-3">
   <div class="col-md-12">
     <h1>
-      All likes
+      My Liked Photos
     </h1>
 
     <a href="/likes/new" class="btn btn-block btn-outline-secondary">
@@ -17,13 +17,6 @@
   <div class="col-md-12">
     <table class="table">
       <tr>
-        <th>
-          ID
-        </th>
-
-        <th>
-          User
-        </th>
 
         <th>
           Photo
@@ -43,16 +36,12 @@
 
       <% @likes.each do |like| %>
       <tr>
-        <td>
-          <%= like.id %>
-        </td>
 
         <td>
-          <%= like.user_id %>
-        </td>
-
-        <td>
-          <img src="<%= Photo.where(id: like.photo_id).first.image %>" width=400 px>
+          <img src="<%= Photo.where(id: like.photo_id).first.image %>" width=400px >
+            <p>
+              <%= Photo.where(id: like.photo_id).first.caption %>
+            </p>
         </td>
 
         <td>

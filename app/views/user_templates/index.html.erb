@@ -1,12 +1,8 @@
 <div class="row mb-3">
   <div class="col-md-12">
     <h1>
-      All likes
+      All users
     </h1>
-
-    <a href="/likes/new" class="btn btn-block btn-outline-secondary">
-      Add a new like
-    </a>
   </div>
 </div>
 
@@ -22,11 +18,7 @@
         </th>
 
         <th>
-          User
-        </th>
-
-        <th>
-          Photo
+          Username
         </th>
 
         <th>
@@ -41,29 +33,25 @@
         </th>
       </tr>
 
-      <% @likes.each do |like| %>
+      <% @users.each do |user| %>
       <tr>
         <td>
-          <%= like.id %>
+          <%= user.id %>
         </td>
 
         <td>
-          <%= like.user_id %>
+          <%= user.username %>
         </td>
 
         <td>
-          <img src="<%= Photo.where(id: like.photo_id).first.image %>" width=400 px>
+          <%= time_ago_in_words(user.created_at) %> ago
+        </td>
+        <td>
+          <%= time_ago_in_words(user.updated_at) %> ago
         </td>
 
         <td>
-          <%= time_ago_in_words(like.created_at) %> ago
-        </td>
-        <td>
-          <%= time_ago_in_words(like.updated_at) %> ago
-        </td>
-
-        <td>
-          <a href="/likes/<%= like.id %>">
+          <a href="/users/<%= user.id %>">
             Show details
           </a>
         </td>
